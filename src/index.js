@@ -1,17 +1,45 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import { BrowserRouter as Router } from 'react-router-dom';
+import './scss/app.scss';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { Provider } from 'react-redux';
+import store from './redux/store';
+
+//console.log(store.getState());
+
+/* function counterReducer(state = 0, action) {
+    switch (action.type) {
+        case 'INCREMENT':
+            return state + 1;
+        case 'DECREMENT':
+            return state - 1;
+        default:
+            return state;
+    }
+}
+
+const store = createStore(counterReducer); // хранилище
+
+console.log(store);
+
+store.subscribe(() => console.log(store.getState())); // 0
+
+store.dispatch({ type: 'INCREMENT' });
+console.log(store); // 0 + 1 = 1
+
+store.dispatch({ type: 'DECREMENT' });
+console.log(store); // 1 - 1 = 0 */
+
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+    //<React.StrictMode>
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+    //</React.StrictMode>,
+    <Router>
+        <Provider store={store}>
+            <App />
+        </Provider>
+    </Router>,
+    document.getElementById('root')
+);
